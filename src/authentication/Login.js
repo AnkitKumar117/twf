@@ -4,7 +4,7 @@ import {
   Nav,
 } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./style.scss";
 
 export default function Login() {
@@ -23,7 +23,7 @@ export default function Login() {
       setError("");
       setLoading(true);
       await login(emailRef.current.value, passwordRef.current.value);
-      history.push("/");
+      history.push("/home");
     } catch {
       setError("Failed to Login");
     }
@@ -64,15 +64,12 @@ export default function Login() {
           </div>
           <div className="footer">
             <input type="submit" className="btn" value="Submit" /> <br />
-            <h4 style={{ "margin-bottom": "10px" }}>Need an Account?</h4>
-            <Nav.Link className="" href="#link">
-              <button type="button" class="btn btn-default btn-lg">
-                <a href="/signup" style={{ color: "#fff" }}>
+            <p style={{ "margin-bottom": "10px" }}>Need an Account?</p>
+            <button type="button" class="btn btn-default btn-lg">
+                <Link href="/signup" style={{ color: "#fff" }}>
                   Register
-                </a>
+                </Link>
               </button>
-            </Nav.Link>
-            {/* <button className="btn">Register</button>      */}
           </div>
         </div>
       </Form>

@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import db from "../Firebase";
 import "./style.scss";
 export default function Signup() {
-  const x = 1;
 
   const emailRef = useRef();
 
@@ -26,30 +25,7 @@ export default function Signup() {
       setError("");
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
-      const emailuser = emailRef.current.value;
-
       history.push("/");
-      db.collection("profile")
-        .doc(emailuser)
-        .set(
-          {
-            name: "john",
-            email: emailuser,
-            state: "CAefwefweefwfwefsdscdv",
-            country: "USAwqdqd",
-            followers: "xx",
-            following: "xxx",
-            hobby: "xx",
-            Profession: "xx",
-          },
-          { merge: true }
-        )
-        .then(() => {
-          console.log("Document successfully written!");
-        })
-        .catch((error) => {
-          console.error("Error writing document: ", error);
-        });
     } catch {
       setError("Failed to create account");
     }
